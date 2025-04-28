@@ -11,18 +11,13 @@ RUN set -uex; \
     echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
     > /etc/apt/sources.list.d/nodesource.list; \
     apt-get update; \
-    apt-get install nodejs -y;
+    apt-get install nodejs bash findutils -y; \
+    npm install -g sass typescript;
 
-# 2. Install bash, GNU findutils, and your global CLIs
-RUN apk add --no-cache \
-      bash \
-      findutils \
-    && npm install -g sass typescript
-
-# 3. Set working directory for your mounted project
+# 2. Set working directory for your mounted project
 WORKDIR /src
 
-# 4. Run whatever script is in the project root
+# 3. Run whatever script is in the project root
 #    – if the project’s build-frontend.sh isn’t executable, you can still
 #      run it via bash.
 ENTRYPOINT ["bash", "./build-frontend.sh"]
