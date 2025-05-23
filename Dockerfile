@@ -1,5 +1,5 @@
 # 1. Base on Node + Alpine for minimal size
-FROM mcr.microsoft.com/dotnet/sdk:9.0
+FROM mcr.microsoft.com/dotnet/runtime:9.0
 
 RUN set -uex; \
     apt-get update; \
