@@ -1,5 +1,5 @@
 # 1. Base on Node + Alpine for minimal size
-FROM node:22-alpine
+FROM node:24-alpine
 
 # 2. Install bash, GNU findutils, and your global CLIs
 RUN apk add --no-cache \
