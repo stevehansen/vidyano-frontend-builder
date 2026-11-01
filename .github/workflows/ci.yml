@@ -1,0 +1,15 @@
+name: CI
+
+# Pushes to main are built and pushed by publish.yml; this only checks that PRs still build.
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Build image
+      run: docker build .
